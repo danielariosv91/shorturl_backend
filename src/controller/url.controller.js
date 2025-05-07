@@ -15,11 +15,7 @@ exports.redirect = async (req, res) => {
 
     const { shortId } = req.params;
 
-
     const url = await Url.findOne({ shortId: shortId });
-
-    console.log("Intentando redirigir:", shortId);
-    console.log("url: ", url);
 
     if (url) return res.redirect(url.originalUrl);
     res.status(404).send('URL not found');
